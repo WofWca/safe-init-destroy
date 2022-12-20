@@ -14,7 +14,10 @@
         "deinit",
         "constructor",
         "destructor",
+        "declarative",
         "refactoring",
+        "utils",
+        "helpers",
         "async",
         "concurrency"
     ]
