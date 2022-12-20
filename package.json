@@ -1,0 +1,21 @@
+{
+    "name": "safe-init-destroy",
+    "version": "1.0.0",
+    "description": "The right way to write `destroy()` functions",
+    "main": "main.js",
+    "license": "Apache-2.0",
+    "author": {
+        "name": "WofWca",
+        "email": "wofwca@protonmail.com"
+    },
+    "keywords": [
+        "init",
+        "destroy",
+        "deinit",
+        "constructor",
+        "destructor",
+        "refactoring",
+        "async",
+        "concurrency"
+    ]
+}
