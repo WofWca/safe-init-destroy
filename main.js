@@ -15,6 +15,7 @@
  * limitations under the License. 
  */
 
+
 // // TODO making the user pass the array is a set up for breaking changes.
 // // Maybe internalize this somehow. Through a class.
 // // Or is it fine because we don't tell the user that it's an array?
@@ -101,7 +102,7 @@ export class DestrucionManager {
   /**
    * Invoke all the callbacks that were added by calling {@link DestrucionManager.onDestroy}.
    * Callbacks are executed in the same order they were added.
-   * If a callback returns a Promise (e.g. it's an async function), then wait for it to resolve
+   * If a callback returns a `Promise` (e.g. it's an async function), then wait for it to resolve
    * before invoking the next callback.
    * @public
    */
