@@ -105,6 +105,16 @@ export class DestrucionManager {
    * If none of the callbacks retun a `Promise`, they are all executed synchronously,
    * before this function returns.
    * @public
+   * @example
+   * onDestroy(() => console.log('first'));
+   * onDestroy(() => new Promise(r => setTimeout(r)));
+   * onDestroy(() => console.log('last'));
+   * destroy();
+   * console.log('`destroy` returned');
+   * // This prints:
+   * // first
+   * // `destroy` returned
+   * // last
    */
   async destroy() {
     this.onDestroy = this._onDestroyAfterDestroyCalled;
