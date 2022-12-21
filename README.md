@@ -19,68 +19,64 @@ If you have a function called `destroy` (or `deinit`) and it is longer than 3 li
 <td>
 
 ```js
-class Foo {
-  init() {
+// ...
 
 
 
 
 
+function init() {
+  doSomething();
 
-    doSomething();
-
-    // ...
-    doSomethingElse();
-
-    // ...
-    if (cond) {
-      doSomeOtherThing();
-
-    }
-  }
-  destroy() {
-    undoSomething();
-    undoSomethingElse();
-    if (didDoSomeOtherThing) {
-      undoSomeOtherThing();
-    }
-  }
   // ...
+  doSomethingElse();
+
+  // ...
+  if (cond) {
+    doSomeOtherThing();
+
+  }
 }
+function destroy() {
+  undoSomething();
+  undoSomethingElse();
+  if (didDoSomeOtherThing) {
+    undoSomeOtherThing();
+  }
+}
+// ...
 ```
 
 </td>
 <td>
 
 ```js
-class Foo {
-  init() {
-    const {
-      onDestroy,
-      destroy
-    } = createDestructionManager();
-    this.destroy = destroy;
+// ...
+const {
+  onDestroy,
+  destroy
+} = createDestructionManager();
 
-    doSomething();
-    onDestroy(() => undoSomething());
-    // ...
-    doSomethingElse();
-    onDestroy(() => undoSomethingElse());
-    // ...
-    if (cond) {
-      doSomeOtherThing();
-      onDestroy(() => undoSomeOtherThing());
-    }
-  }
-
-
-
-
-
-
-
+function init() {
+  doSomething();
+  onDestroy(() => undoSomething());
   // ...
+  doSomethingElse();
+  onDestroy(() => undoSomethingElse());
+  // ...
+  if (cond) {
+    doSomeOtherThing();
+    onDestroy(() => undoSomeOtherThing());
+  }
 }
+
+
+
+
+
+
+
+// ...
 ```
 
 </td>
