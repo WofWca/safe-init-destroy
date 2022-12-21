@@ -8,6 +8,10 @@
         "name": "WofWca",
         "email": "wofwca@protonmail.com"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/WofWca/safe-init-destroy.git"
+    },
     "keywords": [
         "init",
         "destroy",
