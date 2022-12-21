@@ -94,8 +94,6 @@ export class DestrucionManager {
 
   // TODO `destrucionManager.destroy()` may be misunderstood as if it just destroys the class
   // itself, and not that it actually calls the `onDestroy` callbacks.
-  // TODO maybe say in the docstring that if no callback returns a `Promise` then all of them
-  // will be invoked synchronously.
   // async doDestroy() {
   // async performDestroy() {
   // async performDestroy() {
@@ -104,6 +102,8 @@ export class DestrucionManager {
    * Callbacks are executed in the same order they were added.
    * If a callback returns a `Promise` (e.g. it's an async function), then wait for it to resolve
    * before invoking the next callback.
+   * If none of the callbacks retun a `Promise`, they are all executed synchronously,
+   * before this function returns.
    * @public
    */
   async destroy() {
@@ -112,7 +112,13 @@ export class DestrucionManager {
     for (const cb of this.onDestroyCallbacks) {
       // TODO option to `Promise.all(this.onDestroyCallbacks.map(cb => cb()))`,
       // so that all callbacks get started in parallel; resolve once they're all done.
-      await cb();
+      const cbRetVal = cb();
+      // Why not just do `await cb()` every time? It's so that if no callback returns a `Promise`
+      // then execute all them synchronously, before `destroy` returns.
+      // TODO perf: maybe make a simplified version of this function.
+      if (cbRetVal instanceof Promise) {
+        await cbRetVal;
+      }
     }
   }
 }
