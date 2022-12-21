@@ -16,34 +16,13 @@
  */
 
 
-// // TODO making the user pass the array is a set up for breaking changes.
-// // Maybe internalize this somehow. Through a class.
-// // Or is it fine because we don't tell the user that it's an array?
-// function destroy(onDestroyCallbacks) {
-//   for (const cb of onDestroyCallbacks) {
-    
-//   }
-// }
-// // export function addOnDestroyCallback
-// function onDestroy(onDestroyCallbacks, callback) {
-//   // TODO an option to call the new callback immediately if `destroy` has already been called.
-//   // OR make the caller explicitly guarantee (through TypeScript, let's say) that `destroy`
-//   // has NOT been called yet.
-//   onDestroyCallbacks.push(callback);
-// }
-
 /**
  * @typedef {DestrucionManager['onDestroyCallbacks'][number]} Callback
  */
 
 // TODO more understandable name?
-// class Janitor
-// class OnDestroyTracker
-// TODO add usage comment. If `destructionManager.onDestroy(...)` is clunky to call, you can do
-// `const onDestroy = destructionManager.onDestroy.bind(destructionManager)`
 export class DestrucionManager {
   constructor() {
-    // this.destroyCalled = false;
     /**
      * @private
      * @type {Array<() => void | Promise<void>>}
@@ -59,13 +38,6 @@ export class DestrucionManager {
      */
     this.onDestroy = this._onDestroyRegular;
   }
-
-  // /**
-  //  * @param {Callback} callback
-  //  */
-  // onDestroy(callback) {
-  //   this.onDestroyCallbacks.push(callback);
-  // }
 
   /**
    * @private
