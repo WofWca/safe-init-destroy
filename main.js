@@ -45,7 +45,7 @@ export class DestrucionManager {
     // this.destroyCalled = false;
     /**
      * @private
-     * @type {Array<() => Awaited<unknown>>}
+     * @type {Array<() => Awaited<void>>}
      */
     this.onDestroyCallbacks = [];
     /**
@@ -122,7 +122,9 @@ export function createDestructionManager() {
   const destrucionManager = new DestrucionManager();
   // Be careful, `.bind()` won't work here because we reassign `onDestroy`.
   return {
+    /** @type {typeof destrucionManager.onDestroy} */
     onDestroy: (...args) => destrucionManager.onDestroy(...args),
+    /** @type {typeof destrucionManager.destroy} */
     destroy: (...args) => destrucionManager.destroy(...args),
   };
 }
