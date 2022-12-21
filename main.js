@@ -45,7 +45,7 @@ export class DestrucionManager {
     // this.destroyCalled = false;
     /**
      * @private
-     * @type {Array<() => Awaited<void>>}
+     * @type {Array<() => void | Promise<void>>}
      */
     this.onDestroyCallbacks = [];
     /**
