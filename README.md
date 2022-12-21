@@ -4,7 +4,6 @@ If you have a function called `destroy` (or `deinit`) and it is longer than 3 li
 
 ## Example
 
-<!-- TODO how about write it as a diff (```diff ...```? -->
 <!-- TODO maybe we should "inline" the `doSomething` functions. May be confusing. -->
 
 <table>
@@ -50,33 +49,33 @@ function destroy() {
 </td>
 <td>
 
-```js
+```diff js
 // ...
-const {
-  onDestroy,
-  destroy
-} = createDestructionManager();
-
-function init() {
-  doSomething();
-  onDestroy(() => undoSomething());
-  // ...
-  doSomethingElse();
-  onDestroy(() => undoSomethingElse());
-  // ...
-  if (cond) {
-    doSomeOtherThing();
-    onDestroy(() => undoSomeOtherThing());
-  }
-}
-
-
-
-
-
-
-
-// ...
++const {
++  onDestroy,
++  destroy
++} = createDestructionManager();
+ 
+ function init() {
+   doSomething();
++  onDestroy(() => undoSomething());
+   // ...
+   doSomethingElse();
++  onDestroy(() => undoSomethingElse());
+   // ...
+   if (cond) {
+     doSomeOtherThing();
++    onDestroy(() => undoSomeOtherThing());
+   }
+ }
+-function destroy() {
+-  undoSomething();
+-  undoSomethingElse();
+-  if (didDoSomeOtherThing) {
+-    undoSomeOtherThing();
+-  }
+-}
+ // ...
 ```
 
 </td>
