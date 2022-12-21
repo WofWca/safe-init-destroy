@@ -1,6 +1,6 @@
 # safe-init-destroy
 
-If you have a function called `destroy` (or `deinit`) and it is longer than 3 lines, you may want to rewrite it using this library.
+If you have a function called `destroy` (or `deinit`) and it is longer than 3 lines, you may want to rewrite it using this approach.
 
 ## Example
 
