@@ -2,6 +2,8 @@
 
 If you have a function called `destroy` (or `deinit`) and it is longer than 3 lines, you may want to rewrite it using this approach.
 
+> UDP: I just learned that this is an "observer" design pattern, so I guess the takeaway is "the observer pattern is good in this case".
+
 ## Example
 
 <!-- TODO maybe we should "inline" the `doSomething` functions. May be confusing. -->
